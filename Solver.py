@@ -1,7 +1,6 @@
 from Trie import Trie
 import urllib3
 
-
 # import English Dictionary
 http = urllib3.PoolManager()
 url = 'https://raw.githubusercontent.com/dwyl/english-words/master/words_alpha.txt'
@@ -27,15 +26,15 @@ class Solver:
         self._solve()
 
     def get_words(self) -> set:
-        '''
+        """
         Return the set of vaid words found in grid
-        '''
+        """
         return self._seen.copy()
 
     def get_number_of_words(self):
-        '''
+        """
         Return the number of words found in grid
-        '''
+        """
         return self._ret
 
     def _solve(self) -> None:
@@ -44,19 +43,20 @@ class Solver:
                 self._dfs(row, col)
 
     def _dfs(self, row: int, col: int, query='', num_char=1) -> None:
-        if row >= 0 and row < self._n and col >= 0 and col < self._n and self._grid[row][col] != '#' and db.startswith(query + self._grid[row][col]):
+        if 0 <= row < self._n and 0 <= col < self._n and self._grid[row][col] != '#' and db.startswith(
+                query + self._grid[row][col]):
             character = self._grid[row][col]
             query += character
             self._grid[row][col] = '#'
             if num_char > 2 and query not in self._seen and db.search(query):
                 self._ret += 1
                 self._seen.add(query)
-            self._dfs(row+1, col, query, num_char+1)
-            self._dfs(row+1, col+1, query, num_char+1)
-            self._dfs(row+1, col-1, query, num_char+1)
-            self._dfs(row-1, col, query, num_char+1)
-            self._dfs(row-1, col+1, query, num_char+1)
-            self._dfs(row-1, col-1, query, num_char+1)
-            self._dfs(row, col+1, query, num_char+1)
-            self._dfs(row, col-1, query, num_char+1)
+            self._dfs(row + 1, col, query, num_char + 1)
+            self._dfs(row + 1, col + 1, query, num_char + 1)
+            self._dfs(row + 1, col - 1, query, num_char + 1)
+            self._dfs(row - 1, col, query, num_char + 1)
+            self._dfs(row - 1, col + 1, query, num_char + 1)
+            self._dfs(row - 1, col - 1, query, num_char + 1)
+            self._dfs(row, col + 1, query, num_char + 1)
+            self._dfs(row, col - 1, query, num_char + 1)
             self._grid[row][col] = character

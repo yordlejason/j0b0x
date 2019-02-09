@@ -8,7 +8,6 @@ class Trie:
         self._root = self.node()
         self._root[None] = True
 
-
     def insert(self, word: str) -> None:
         """
         Inserts a word into the trie.
@@ -21,7 +20,6 @@ class Trie:
             node = node[c]
         node[True] = True
 
-
     def search(self, word: str) -> bool:
         """
         Returns if the word is in the trie.
@@ -32,7 +30,6 @@ class Trie:
                 return False
             node = node[c]
         return node[True]
-
 
     def startswith(self, prefix: str) -> bool:
         """
