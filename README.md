@@ -1,5 +1,31 @@
 # Instruction
 
-Please run `pip install -r requirements.txt` so that you can install the required libraries and dependencies.
+### 1. Install the dependencies 
 
-Then, type `python3 -i run.py` and pass in the arguments to `solver(:n, :grid)` that are described in the PDF file.
+#### `pip install -r requirements.txt`
+
+
+
+### 2. Run 
+
+####`python3 -i run.py` 
+
+
+
+### 3. Pass in the arguments to 
+
+#### `solver(:n, :grid)` 
+
+
+
+If you want to take a look at the words found from the grid, you can instantiate the Solver and call `get_words()` method. Here is the example:
+
+
+
+```python
+>>> from Solver import Solver
+>>> solver = Solver(n, grid)
+>>> solver.get_words(:n, :grid)
+
+```
+
