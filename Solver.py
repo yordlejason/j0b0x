@@ -44,7 +44,7 @@ class Solver:
                 self._dfs(row, col)
 
     def _dfs(self, row: int, col: int, query='', num_char=1) -> None:
-        if row >= 0 and row < self._n and col >= 0 and col < self._n and self._grid[row][col] != '#':
+        if row >= 0 and row < self._n and col >= 0 and col < self._n and self._grid[row][col] != '#' and db.startswith(query + self._grid[row][col]):
             character = self._grid[row][col]
             query += character
             self._grid[row][col] = '#'
