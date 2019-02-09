@@ -26,19 +26,24 @@ class Solver:
         self._seen = set()
         self._solve()
 
-    def get_words(self):
+    def get_words(self) -> set:
+        '''
+        Return the set of vaid words found in grid
+        '''
         return self._seen.copy()
 
     def get_number_of_words(self):
+        '''
+        Return the number of words found in grid
+        '''
         return self._ret
 
-    def _solve(self):
+    def _solve(self) -> None:
         for row in range(self._n):
             for col in range(self._n):
                 self._dfs(row, col)
-        return self._ret
 
-    def _dfs(self, row, col, query='', num_char=1) -> None:
+    def _dfs(self, row: int, col: int, query='', num_char=1) -> None:
         if row >= 0 and row < self._n and col >= 0 and col < self._n and self._grid[row][col] != '#':
             character = self._grid[row][col]
             query += character
